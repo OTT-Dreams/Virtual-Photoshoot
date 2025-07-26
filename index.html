@@ -296,25 +296,24 @@
 
     getMedia();
 
-    // ✅ Screenshot button logic
+    // ✅ Remote Video Screenshot
     const captureBtn = document.getElementById("captureBtn");
     captureBtn.addEventListener("click", () => {
-      if (!localVideo.srcObject) return alert("No video stream available!");
+      if (!remoteVideo.srcObject) return alert("No remote video available!");
 
       const canvas = document.createElement("canvas");
-      canvas.width = localVideo.videoWidth;
-      canvas.height = localVideo.videoHeight;
+      canvas.width = remoteVideo.videoWidth;
+      canvas.height = remoteVideo.videoHeight;
 
       const ctx = canvas.getContext("2d");
-      ctx.drawImage(localVideo, 0, 0, canvas.width, canvas.height);
+      ctx.drawImage(remoteVideo, 0, 0, canvas.width, canvas.height);
 
       const imgData = canvas.toDataURL("image/png");
       const link = document.createElement("a");
       link.href = imgData;
-      link.download = "snapshot.png";
+      link.download = "remote_snapshot_hd.png";
       link.click();
     });
   </script>
 </body>
 </html>
-  
